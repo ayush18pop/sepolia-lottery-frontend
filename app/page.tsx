@@ -8,7 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import abi from '../lib/abi.json';
 import { useState } from "react";
 import { formatEther, parseEther } from "viem";
-import { Loader2, Trophy, Sparkles } from "lucide-react";
+// ICONS: Added Github and Cube for the new buttons
+import { Loader2, Trophy, Sparkles, Github, Cuboid } from "lucide-react";
 
 const contractConfig = {
   address: "0x09Fc1017156c44aB4a85EcD87732CFB8bB42bFe5",
@@ -85,6 +86,23 @@ export default function Home() {
                 <span>100% transparent on-chain</span>
               </div>
             </div>
+
+            <div className="flex items-center gap-4 pt-6">
+              <a href="https://github.com/ayush18pop/lottery-contract" target="_blank" rel="noopener noreferrer">
+                <Button  className="gap-2 w-full sm:w-auto">
+                  <Github className="w-4 h-4" />
+                  View Code
+                </Button>
+              </a>
+              <a href={`https://sepolia.etherscan.io/address/${contractConfig.address}`} target="_blank" rel="noopener noreferrer">
+                <Button className="gap-2 w-full sm:w-auto">
+                  <Cuboid className="w-4 h-4" />
+                  View Contract
+                </Button>
+              </a>
+            </div>
+            {/* END OF NEW SECTION */}
+
           </div>
 
           {/* Right - Lottery */}
@@ -119,7 +137,7 @@ export default function Home() {
                         step="0.001"
                         className="h-14 text-center text-lg bg-input border-border text-foreground"
                       />
-                        
+                          
                       <Button 
                         onClick={handleEnterRaffle}
                         disabled={!isConnected || isEntering || !amount}
